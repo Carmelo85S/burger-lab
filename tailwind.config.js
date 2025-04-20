@@ -5,6 +5,16 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        title: ['Shrikhand', 'cursive'],
+        body: ['Inter', 'sans-serif'],
+      },
+      screens: {
+        xs: '600px',      // Logo mobile visible till 600px
+        sm: '769px',      // Breakpoint between small and medium
+        md: '890px',      // Medium breakpoint where desktop logo appears
+        lg: '891px',      // Desktop navigation starts above 890px
+      },
       colors: {
         burger: {
           bun: "#F5D6A1",        // Light toasted bun

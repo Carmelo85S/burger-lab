@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Button } from '../ui/Button';
-import Logo from '../../assets/logo.webp'
+import Logo from '../../assets/logo.webp';
+import LogoMobile from '../../assets/logoMobile.webp';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,20 +16,34 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white bg-opacity-80 backdrop-blur-lg shadow-md">
+    <nav className="sticky top-0 z-50 bg-white backdrop-blur-lg shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <button onClick={() => scrollToSection('hero')} className="flex items-center space-x-2 hover:text-burger-sauce transition-all">
-          <span className="flex items-center text-3xl font-helvetica font-bold text-burger-dark">
-            SONJAS 
-            <img src={Logo}
-            className="w-[120px]" 
-            alt="logo" /><span className="text-burger-sauce">BURGARE</span>
+        {/* Logo Section */}
+        <button
+          onClick={() => scrollToSection('hero')}
+          className="flex items-center space-x-2 hover:text-burger-sauce transition-all"
+        >
+          {/* Logo Mobile - visibile fino a 890px */}
+          <img
+            src={LogoMobile}
+            alt="Sonjas Mobile Logo"
+            className="block lg:hidden w-[100px]"
+          />
+
+          {/* Logo Desktop - visibile da 891px in su */}
+          <span className="hidden lg:flex items-center text-3xl font-helvetica font-bold text-burger-dark">
+            SONJAS
+            <img
+              src={Logo}
+              className="w-[120px] mx-2"
+              alt="logo"
+            />
+            <span className="text-burger-sauce">BURGARE</span>
           </span>
         </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        {/* Desktop Navigation - visibile da 891px */}
+        <div className="hidden lg:flex items-center space-x-8">
           {['menu', 'about', 'contact'].map((section) => (
             <button
               key={section}
@@ -49,9 +64,12 @@ const Navbar: React.FC = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-burger-dark hover:text-burger-sauce transition-all">
+        {/* Mobile Menu Button - visibile fino a 890px */}
+        <div className="lg:hidden flex items-center">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 text-burger-dark hover:text-burger-sauce transition-all"
+          >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -59,7 +77,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute w-full z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-lg animate-fade-in">
+        <div className="lg:hidden absolute w-full z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-lg animate-fade-in">
           <div className="px-6 py-6 space-y-4">
             {['menu', 'about', 'contact'].map((section) => (
               <button
