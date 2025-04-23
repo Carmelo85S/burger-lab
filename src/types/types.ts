@@ -119,5 +119,69 @@ export const vegetariskSalladData: VegetariskSalladMenu[] = [
       description: 'Bas på romansallad, tomat, krutonger, dressing, picklad rödlök, parmesan',
       price: 125,
     },
-  ];
+];
   
+export interface SnackMenu {
+  id: string;
+  name: string;
+  description: string;
+  price: number | { quantity: number; price: number }[];
+}
+
+export const snackMenuData: SnackMenu[] = [
+  {
+    id: 'kycklingvingar',
+    name: 'Marinerade Kycklingvingar',
+    description: '',
+    price: [
+      { quantity: 7, price: 55 },
+      { quantity: 14, price: 100 },
+    ],
+  },
+  {
+    id: 'mozzarella-sticks',
+    name: 'Mozzarella Sticks',
+    description: '5st',
+    price: 35,
+  },
+  {
+    id: 'lokringar',
+    name: 'Lökringar',
+    description: '7st',
+    price: 35,
+  },
+  {
+    id: 'jalapeno-poppers',
+    name: 'Jalapeño Poppers',
+    description: 'Ost & jalapeñofyllda bollar - 5st',
+    price: 35,
+  },
+];
+
+export interface Sida {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
+export const sidaData: Sida[] = [
+  {
+    id: 'pommes',
+    name: 'French Pommes',
+    description: 'Klassiska pommes frites',
+    price: 30,
+  },
+  {
+    id: 'sötpotatis',
+    name: 'Sötpotatis',
+    description: 'Sötpotatispommes med srirachamajonnäs',
+    price: 40,
+  },
+  {
+    id: 'Ostiga Pommes',
+    name: 'Ostiga Pommes',
+    description: 'Pommes med smältost och jalapeño',
+    price: 40,
+  }
+];

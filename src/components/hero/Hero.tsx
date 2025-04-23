@@ -11,8 +11,8 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-center py-6">
-      <div className="max-w-[1300px] px-6 w-full flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+    <section className="w-full min-h-screen flex items-center justify-center">
+      <div className="max-w-[1300px] px-6 w-full flex flex-col-reverse md:flex-row items-center justify-between gap-10">
         <div className="flex flex-col items-start text-left space-y-6 max-w-xl">
           <h1 className="font-title text-4xl sm:text-5xl md:text-6xl font-extrabold text-burger-sauce">
             The Burger You Deserve.
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           <img
             src={heroImg}
             alt="Juicy burger on a plate"
-            className="w-full h-auto object-cover rounded-3xl shadow-[-10px_-10px_0px_#D2691E]"
+            className="w-5/6 h-auto object-cover mx-auto rounded-3xl shadow-[-10px_-10px_0px_#D2691E]"
           />
         </div>
       </div>
