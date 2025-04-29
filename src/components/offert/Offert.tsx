@@ -39,7 +39,7 @@ const Offert = () => {
     <>
       {/* Hero Section */}
       <section
-        className="relative w-full h-[85vh] flex items-center justify-center bg-cover bg-center"
+        className="relative w-full h-[70vh] flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${offertBg})` }}
       >
         <div className="text-center px-4 sm:px-8 md:px-12 max-w-3xl">
@@ -58,7 +58,7 @@ const Offert = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative z-20 w-5/6 mx-auto -translate-y-24 bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="relative z-20 w-5/6 mx-auto -translate-y-24 backdrop-blur-md p-5 rounded-3xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           const isMiddle = index === 1 || index === 4;
@@ -67,8 +67,8 @@ const Offert = () => {
             <div
               key={index}
               className={`
-                flex flex-col items-center text-center border p-6 rounded-xl shadow-md
-                ${isMiddle ? 'bg-burger-bun text-white -translate-y-4' : 'bg-white text-gray-800'}
+                flex flex-col items-center text-center border p-6 shadow-md
+                ${isMiddle ? 'bg-burger-sauce text-white -translate-y-4' : 'bg-white text-gray-800'}
                 transition-all duration-300 hover:shadow-lg
               `}
             >
