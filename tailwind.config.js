@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        title: ['Shrikhand', 'cursive'],
+        title: ['Baloo 2', 'cursive'],
         body: ['Inter', 'sans-serif'],
       },
       screens: {

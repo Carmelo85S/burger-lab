@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white backdrop-blur-lg shadow-md">
+    <nav className="sticky top-0 z-50 bg-white/20 backdrop-blur-lg shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo Section */}
         <button
