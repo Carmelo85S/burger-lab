@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section
+    <section id="home"
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
