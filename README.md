@@ -25,19 +25,6 @@ Perfect for burger joints or any restaurant wanting a clean digital presence.
 
 ---
 
-## 📁 Project Structure
-
-src/
-├── assets/ # Static images
-├── components/ # Reusable components (e.g., Menu, Contact)
-├── types/ # TypeScript types for data
-├── App.tsx # Main app container
-├── main.tsx # Entry point
-├── ErrorBoundary.tsx # Custom error fallback component
-└── styles/ # Tailwind and global styles
-
-📄 License
-
 This project is licensed under the MIT License.
 
 Made with ❤️ by Carmelo Salis 
