@@ -1,3 +1,4 @@
+import { useInView } from 'react-intersection-observer';
 import offertBg from '../../assets/offert-bg.webp';
 import { Beef, Salad, Leaf, Smile, Coffee, Star } from "lucide-react";
 
@@ -42,7 +43,11 @@ const Offert = () => {
         className="relative w-full h-[70vh] flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${offertBg})` }}
       >
-        <div className="text-center px-4 sm:px-8 md:px-12 max-w-3xl">
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-40 z-0" />
+
+        {/* Hero content */}
+        <div className="relative z-10 text-center px-4 sm:px-8 md:px-12 max-w-3xl">
           <p className="font-body text-lg sm:text-xl text-burger-bun border-b-4 border-b-burger-sauce inline-block tracking-wider mb-4">
             SAVOR THE FLAVOR
           </p>
@@ -58,24 +63,33 @@ const Offert = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative z-20 w-5/6 mx-auto -translate-y-24 backdrop-blur-md p-5 rounded-3xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="relative z-20 w-5/6 mx-auto lg:-translate-y-24 backdrop-blur-md p-5 rounded-3xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => {
           const Icon = feature.icon;
-          const isMiddle = index === 1 || index === 4;
+          const isHighlighted = index === 1 || index === 4;
+
+          // Use the Intersection Observer hook here
+          const { ref, inView } = useInView({
+            triggerOnce: true, // Triggers only once
+            threshold: 0.2, // Starts animating when 20% of the element is in view
+          });
 
           return (
-            <div
-              key={index}
+            <article
+              key={feature.title}
+              ref={ref}
               className={`
-                flex flex-col items-center text-center border p-6 shadow-md
-                ${isMiddle ? 'bg-burger-sauce text-white -translate-y-4' : 'bg-white text-gray-800'}
+                flex flex-col items-center text-center border p-6 shadow-md rounded-2xl
+                ${isHighlighted ? 'bg-burger-sauce text-white -translate-y-4' : 'bg-white text-gray-800'}
                 transition-all duration-300 hover:shadow-lg
+                transform ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
+                transition-all duration-1000 ease-in-out
               `}
             >
-              <Icon size={48} className={`${isMiddle ? 'text-white' : 'text-burger-meat'} mb-4`} />
+              <Icon size={48} className={`${isHighlighted ? 'text-white' : 'text-burger-meat'} mb-4`} />
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
               <p className="text-sm">{feature.description}</p>
-            </div>
+            </article>
           );
         })}
       </section>

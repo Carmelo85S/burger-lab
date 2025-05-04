@@ -5,6 +5,7 @@ import burger3 from '../../assets/burger3.jpg';
 import burger4 from '../../assets/burger4.jpg';
 import burger5 from '../../assets/burger5.jpg';
 import burger6 from '../../assets/burger6.jpg';
+import { useInView } from 'react-intersection-observer';
 
 const Gallery: React.FC = () => {
     const images: string[] = [
@@ -28,14 +29,24 @@ const Gallery: React.FC = () => {
                     </h2>
                 </div>
                 <div className="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
-                    {images.map((src: string, index: number) => (
-                        <img
-                            key={index}
-                            src={src}
-                            alt={`Gallery item ${index + 1}`}
-                            className="w-full h-52 sm:h-64 object-cover rounded-xl shadow hover:scale-105 transition-transform duration-300 ease-in-out animate-fade-in"
-                        />
-                    ))}
+                    {images.map((src: string, index: number) => {
+                        const { ref, inView } = useInView({
+                            triggerOnce: true, // Trigger animation once when it comes into view
+                            threshold: 0.2, // Trigger when 20% of the image is visible
+                        });
+
+                        return (
+                            <img
+                                key={index}
+                                ref={ref}
+                                src={src}
+                                alt={`Gallery item ${index + 1}`}
+                                className={`w-full h-52 sm:h-64 object-cover rounded-xl shadow hover:scale-105 transition-transform duration-300 ease-in-out ${
+                                    inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                                }`}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </section>

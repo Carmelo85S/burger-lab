@@ -1,65 +1,59 @@
 import { ThumbsUp, ForkKnife, Quote } from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
+import { testimonials } from '../../types/testimonials';
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react';
 
 const Testimonials = () => {
-    const testimonials = [
-        {
-            name: "Carla Larsson",
-            message:
-                "The best burger I've ever had! The flavors are incredible, and the service was exceptional.",
-            image: "https://images.pexels.com/photos/157920/woman-face-curly-hair-157920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        },
-        {
-            name: "Roxanne Smith",
-            message:
-                "Delicious burgers, and the atmosphere is perfect for a casual night out. Highly recommend!",
-            image: "https://images.pexels.com/photos/2748239/pexels-photo-2748239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        },
-        {
-            name: "Alice Johansson",
-            message:
-                "I’m a burger enthusiast, and this place has won me over. Fresh ingredients and a great vibe!",
-            image: "https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        },
-    ];
+  return (
+    <section className="bg-gray-100 py-16" id="testimonials">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center text-burger-sauce mb-12">
+          What Our Customers Say
+        </h2>
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial: { name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; image: string | undefined; message: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }, index: Key | null | undefined) => {
+            const { ref, inView } = useInView({
+              triggerOnce: true, // Animation will run only once
+              threshold: 0.2, // Trigger when 20% is visible
+            });
 
-    return (
-        <div className="bg-gray-100 py-12">
-            <div className="max-w-6xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-                    What Our Customers Say
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, index) => (
-                        <div
-                            key={index}
-                            className="bg-white shadow-lg rounded-lg p-6 text-center"
-                        >
-                            <img
-                                src={testimonial.image}
-                                alt={testimonial.name}
-                                className="w-20 h-20 rounded-full mx-auto mb-4"
-                            />
-                            <h3 className="text-xl font-semibold text-gray-800">
-                                {testimonial.name}
-                            </h3>
-                            <p className="text-gray-600 mt-4">{testimonial.message}</p>
-                            <div className="flex justify-center mt-4 text-yellow-500">
-                                <ThumbsUp size={20} />
-                                <ThumbsUp size={20} />
-                                <ThumbsUp size={20} />
-                            </div>
-                            <div className="mt-4">
-                                <ForkKnife className="text-gray-500" size={24} />
-                            </div>
-                            <div className="mt-2">
-                                <Quote className="text-gray-500" size={24} />
-                            </div>
-                        </div>
-                    ))}
+            return (
+              <article
+                key={index}
+                ref={ref}
+                className={`bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transition-all duration-500 ease-in-out ${
+                  inView
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
+                role="group"
+                aria-label={`Testimonial from ${testimonial.name}`}
+              >
+                <img
+                  src={testimonial.image}
+                  alt={`Portrait of ${testimonial.name}`}
+                  className="w-20 h-20 rounded-full object-cover mb-4 shadow"
+                />
+                <h3 className="text-xl font-semibold text-burger-sauce mb-2">{testimonial.name}</h3>
+                <p className="text-gray-600 mb-6 text-sm">{testimonial.message}</p>
+
+                <div className="flex items-center justify-center gap-2 text-yellow-400 mb-4" aria-label="Rating: 3 thumbs up">
+                  <ThumbsUp size={20} />
+                  <ThumbsUp size={20} />
+                  <ThumbsUp size={20} />
                 </div>
-            </div>
+
+                <div className="flex gap-4 text-gray-400">
+                  <ForkKnife size={20} aria-label="Fork and Knife Icon" />
+                  <Quote size={20} aria-label="Quote Icon" />
+                </div>
+              </article>
+            );
+          })}
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default Testimonials;

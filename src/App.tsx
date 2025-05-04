@@ -3,6 +3,7 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Gallery from "./components/gallery/Gallery";
 import Hero from "./components/hero/Hero";
+import Menu from "./components/menu/Menu";
 import Navbar from "./components/navbar/Navbar"
 import Offert from "./components/offert/Offert";
 import Testimonials from "./components/testimonials/Testimonials";
@@ -14,6 +15,7 @@ const App = () => {
       <Hero />
       <About />
       <Offert />
+      <Menu />
       <Gallery />
       <Testimonials />
       <Contact />
