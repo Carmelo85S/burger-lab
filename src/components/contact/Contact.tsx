@@ -93,7 +93,7 @@ const Contact = () => {
                   name="name"
                   type="text"
                   required
-                  placeholder="Your name"
+                  placeholder="Name"
                   className="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-burger-sauce transition-all duration-300"
                 />
               </div>
@@ -107,7 +107,7 @@ const Contact = () => {
                   name="email"
                   type="email"
                   required
-                  placeholder="Your email"
+                  placeholder="Email"
                   className="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-burger-sauce transition-all duration-300"
                 />
               </div>
