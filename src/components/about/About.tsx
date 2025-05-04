@@ -6,10 +6,9 @@ import { Utensils, ConciergeBell } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 const About: React.FC = () => {
-  // Hook per il controllo della visibilità (intersection observer)
   const { ref: imageRef, inView: imageInView } = useInView({
-    triggerOnce: true, // L'animazione scatta solo la prima volta che l'elemento entra nella viewport
-    threshold: 0.2, // Quando il 20% dell'elemento è visibile
+    triggerOnce: true,
+    threshold: 0.2,
   });
   const { ref: textRef, inView: textInView } = useInView({
     triggerOnce: true,
@@ -17,7 +16,7 @@ const About: React.FC = () => {
   });
 
   return (
-    <section id="about" className="w-full min-h-screen py-12 flex items-center justify-center">
+    <section id="about" className="w-full py-12 lg:min-h-screen flex items-center justify-center">
       <div className="max-w-[1300px] px-6 w-full flex flex-col-reverse md:flex-row items-center justify-between gap-10">
 
         {/* Image with animation trigger */}
@@ -55,7 +54,7 @@ const About: React.FC = () => {
               transition={{ delay: 0.3 }}
               className="font-title text-2xl sm:text-5xl md:text-6xl font-bold text-burger-sauce"
             >
-              Best Burger in Saltsjö-Boo
+              Best in Saltsjö-Boo
             </motion.h2>
 
             <motion.p

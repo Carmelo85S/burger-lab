@@ -19,10 +19,10 @@ const Contact = () => {
     <>
       {/* Hero Section */}
       <section
-        id="contact"
-        className="relative w-full h-[70vh] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${contactBg})` }}
-      >
+  id="contact"
+  className="relative w-full lg:h-[40vh] py-16 flex items-center justify-center bg-cover bg-center"
+  style={{ backgroundImage: `url(${contactBg})` }}
+>
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="text-center px-6 sm:px-8 md:px-12 max-w-3xl z-10">
           <p className="font-body text-lg sm:text-xl text-white border-b-4 border-b-burger-sauce inline-block tracking-wider mb-4">

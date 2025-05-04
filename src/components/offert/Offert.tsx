@@ -39,12 +39,12 @@ const Offert = () => {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative w-full h-[70vh] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${offertBg})` }}
-      >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-40 z-0" />
+      <section className="relative w-full lg:h-[70vh] py-16 flex items-center justify-center bg-cover bg-center">
+        <img
+          src={offertBg}
+          alt="Offert Background"
+          className="absolute inset-0 w-full h-full object-cover opacity-90"
+        />
 
         {/* Hero content */}
         <div className="relative z-10 text-center px-4 sm:px-8 md:px-12 max-w-3xl">
