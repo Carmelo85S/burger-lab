@@ -4,13 +4,12 @@ import bigBurger from '../../assets/contact-form.webp';
 import { useInView } from 'react-intersection-observer';
 
 const Contact = () => {
-  // Dettagli di contatto
   const { ref: contactRef, inView: contactInView } = useInView({
-    triggerOnce: true, // attiva l'animazione solo una volta
-    threshold: 0.2, // quando il 20% è visibile
+    triggerOnce: true, 
+    threshold: 0.2, 
   });
 
-  // Form di contatto
+
   const { ref: formRef, inView: formInView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
